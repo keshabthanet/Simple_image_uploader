@@ -1,0 +1,18 @@
+{% extends 'web/home.html' %} {% block container %}
+<div class=" container" style="margin: auto; border:2px solid black;     height: 288px;
+width: 428px; text-align:center;background-color:aqua;">
+    <h2>Please upload image</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        {% if image %} {% for image in images %}
+
+        <img src="{{image.image.url}}" height=100px;width=120px><br><br> {% endfor %} {% endif %}
+    </div>
+</div>
+
+{% endblock container %}
